@@ -1,3 +1,6 @@
+// I utilized QAShahin's Jasmine tutorials on Youtube (https://www.youtube.com/user/GlassBoxT) to learn the basics of the framework. 
+// I then completed the project independently.
+
 // new suite starts here
 $(function() {
 
