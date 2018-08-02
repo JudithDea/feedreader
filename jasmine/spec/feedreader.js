@@ -33,18 +33,34 @@ $(function() {
             expect(allFeeds[i].url).toBeDefined();
             expect(allFeeds[i].url.length).toBeGreaterThan(0);
           };
-        })
+        });
 
         // spec 3
-        it('has a name that is not empty' function(){
+        it('has a name that is not empty', function(){
           for (i=0; i<allFeeds.length; i++){
            expect(allFeeds[i].name).toBeDefined();
            expect(allFeeds[i].name.length).toBeGreaterThan(0);
          };
-        })
+       });
     });
 
+$(function(){
+  describe("The Menu", function(){
 
+      // spec 4
+      it('menu element is hidden by default', function(){
+        expect($('body')[0].className).toBe('menu-hidden'); // when we first look at the className, it is "menu-hidden"
+      });
+
+      // spec 5
+      it('menu changes from hidden to visible on click, and vice versa', function(){
+        $('.menu-icon-link').click(); // simulates a click event on the .menu-icon-link element
+        expect($('body')[0].className).not.toBe('menu-hidden'); // after clicking the className is not "menu-hidden" anymore
+        $('.menu-icon-link').click(); // simulates the second click event
+        expect($('body')[0].className).toBe('menu-hidden'); // after clicking again the className is "menu-hdden" again
+      })
+  });
+});
     /* TODO: Write a new test suite named "The menu" */
 
         /* TODO: Write a test that ensures the menu element is
