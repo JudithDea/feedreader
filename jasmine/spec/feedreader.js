@@ -55,17 +55,35 @@ $(function(){
       });
 
       // spec 6
-      it('There is at least one .entry within .feed', function(){
-        expect($('.feed').length).toBeGreaterThan(0); // if there is something inside feed, it's length will be greater than 0
+      it('There is at least one .entry within .feed', function(done){
+        expect($('.feed').length).toBeGreaterThan(0); // if there is something inside feed, its length will be greater than 0
+        done();
       });
     });
 });
 
+// new suite starts there
+$(function(){
+    describe('New Feed Selection', function(){
+      let feed1,
+          feed2;
+      beforeEach(function(done){
+        loadFeed(0); // making sure again the loadFeed function was invoked before each test runs
+        feed1 = $('.header-title'); // grabbing the current feed 'name'
+        console.log(feed1);
+        done();
+    });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    // spec 7
+      it('When a new feed is loaded, the content changes', function(done){
+        loadFeed(1); // invoking loadFeed again, now selecting the 2nd element in there
+        feed2 = $('.header-title'); // now we can set the 2nd feed item to compare to first feed item
+        console.log(feed2);
+        expect('feed1').not.toBe('feed2'); // feed1 should be different from feed2
+        done();
+      });
+    });
+});
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
          */
 }());
