@@ -60,7 +60,9 @@ $(function() {
         done();
       });
     });
-
+    
+    
+// new suite starts here
     describe('New Feed Selection', function() {
       let feed1, feed2;
 
