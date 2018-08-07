@@ -61,26 +61,26 @@ $(function() {
       });
     });
 
-// new suite starts there
-    describe('New Feed Selection', function(){
+    describe('New Feed Selection', function() {
       let feed1, feed2;
-          beforeEach(function(done){
-              loadFeed(0, function() {
-                  // load first feed here
-                  feed1 = $('.feed').html(); // storing initial feed item
-                  console.log(feed1);
-                  loadFeed(1, function() {
-                        // load second feed here.
-                        feed2 = $('.feed').html(); // storing 2nd feed item to compare to first feed item
-                        console.log(feed2);
-                      done();
-                  });
-              });
-          });
-    });
 
-    // spec 7
-      it('When a new feed is loaded, the content changes', function(){
-        expect(feed1).not.toBe(feed2); // feed1 should be different from feed2
+      beforeEach(function(done) {
+        loadFeed(0, function() { // loading feed the first time
+          feed1 = $('.feed').html();
+          // console.log(feed1);
+
+          loadFeed(1, function() { // loading feed the second time
+            feed2 = $('.feed').html();
+            // console.log(feed2);
+            done(); // we grabbed the contents, running asynchronus task is concluded
+          });
+        });
+      });
+
+      // spec 7
+      it('When a new feed is loaded, the content changes', function() {
+        expect(feed1).not.toBe(feed2);
       });
     });
+});
+
